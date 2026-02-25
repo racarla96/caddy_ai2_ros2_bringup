@@ -1,0 +1,80 @@
+<vehicle:class name="caddy_ai2">
+    <!--  Dynamical model -->
+    <dynamics class="ackermann">
+        <chassis mass="690.0" zmin="0.235" zmax="0.6">
+            <shape>
+                <pt>-0.4 -0.5</pt>
+                <pt>-0.4  0.5</pt>
+                <pt> 0.4  0.5</pt>
+                <pt> 0.4 -0.5</pt>
+            </shape>
+        </chassis>
+
+        <!-- Tire model - Deli Tire 18.5x8.5-8 (diameter = 0.47 m, width = 0.22 m) -->
+        <!-- Front wheels -->
+        <fl_wheel pos="0  1" mass="8.7" width="0.22" diameter="0.47" max_steer_ang_deg="30"/>
+        <fr_wheel pos="0  1" mass="8.7" width="0.22" diameter="0.47" max_steer_ang_deg="30"/>
+
+        <!-- Rear wheels -->
+        <rl_wheel pos="0  1" mass="8.7" width="0.22" diameter="0.47" />
+        <rr_wheel pos="0 -1" mass="8.7" width="0.22" diameter="0.47" />
+               
+        <f_wheels_x>1.3</f_wheels_x> <!-- -->
+        <f_wheels_d>2.0</f_wheels_d> <!-- -->
+
+        <max_steer_ang_deg>30.0</max_steer_ang_deg> <!-- -->
+
+        <!--   Motor controller -->
+        <controller class="twist_front_steer_pid">
+            <!-- Params -->
+            <KP>1500</KP>  <KI>50</KI> <I_MAX>20</I_MAX> <KD>0</KD>
+            <V>0.0</V><W>0</W>
+            <max_torque>600</max_torque>
+        </controller>
+
+        <!-- Available types: 
+            open_front
+            open_rear
+            open_4wd
+            torsen_front
+            torsen_rear
+            torsen_4wd -->
+        <drivetrain type="open_rear">
+            <rear_left_right_split>0.5</rear_left_right_split>
+            <rear_left_right_bias>0.0</rear_left_right_bias>
+        </drivetrain>
+
+    </dynamics>
+
+    <!-- Friction force simulation -->
+    <friction class="default">
+        <mu>0.7</mu>
+        <C_damping>10</C_damping>
+    </friction>
+
+    <!--<friction class="wardiagnemma">
+        <mu>0.7</mu>
+        <C_damping>10</C_damping>
+        <A_roll>50</A_roll>
+        <R1>0.0075</R1>
+        <R2>0.02</R2>
+    </friction>-->
+
+    <!-- Noisy odometry parameters. These are multipliers to actual SE(2) increments -->
+    <!--
+    <odometry
+        x_multiplier="$f{1.0+0.02*randn()}"
+        y_multiplier="$f{1.0+0.01*randn()}"
+        yaw_multiplier="$f{1.0+0.03*randn()}"
+    />
+    -->
+
+    <visual>
+        <model_uri>../meshes/caddy_ai2_chassis.stl</model_uri>
+        <model_scale>1</model_scale>
+        <model_offset_x>-0.5</model_offset_x>
+        <model_offset_y>0.0</model_offset_y>
+        <model_offset_z>0.0</model_offset_z>
+    </visual>
+
+</vehicle:class>

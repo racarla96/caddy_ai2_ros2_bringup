@@ -1,0 +1,35 @@
+<mvsim_world version="1.0">
+	<!-- Global settings - https://mvsimulator.readthedocs.io/en/latest/world.html#global-settings -->
+	<!-- Global settings - Top-level and global simulation settings - https://mvsimulator.readthedocs.io/en/latest/world_global.html -->
+    <!-- ALL DEFAULT VALUES -->
+	<!-- Global settings - GUI and visualization options - https://mvsimulator.readthedocs.io/en/latest/world_gui.html -->
+	<gui>
+		<ortho>false</ortho>
+		<show_forces>true</show_forces>  
+		<force_scale>0.01</force_scale>
+		<cam_distance>35</cam_distance>
+		<fov_deg>60</fov_deg>
+		<refresh_fps>30</refresh_fps>
+		<!-- <follow_vehicle>r1</follow_vehicle> -->
+	</gui>
+	<!-- Global settings - Georeference options - https://mvsimulator.readthedocs.io/en/latest/world_georeference.html -->
+	<!-- ALL DEFAULT VALUES -->
+	<!-- Global settings - Light and shadows configuration - https://mvsimulator.readthedocs.io/en/latest/world_lighting.html -->
+	<!-- ALL DEFAULT VALUES -->
+
+
+	<!-- World contents - https://mvsimulator.readthedocs.io/en/latest/world.html#world-contents -->
+	<!-- World contents - Elements - https://mvsimulator.readthedocs.io/en/latest/world_elements.html -->
+
+	<!-- World contents - Blocks - https://mvsimulator.readthedocs.io/en/latest/world_blocks.html -->
+
+	<!-- World contents - Vehicles - https://mvsimulator.readthedocs.io/en/latest/world_vehicles.html -->
+	<!-- https://mvsimulator.readthedocs.io/en/latest/vehicles.html -->
+	<include file="caddy_ai2.ackermann.vehicle.xml" />
+	<vehicle name="caddy_ai2" class="caddy_ai2">
+		<init_pose>0 0 0</init_pose>  <!-- In global coords: x,y, yaw(deg) -->
+	</vehicle>
+
+	<!-- World contents - Actors -->
+
+</mvsim_world>
